@@ -23,9 +23,4 @@ let hole = getHole(i);
  function resetGame() {
   deadValue = 0;
   lostValue = 0;
-  dead.textContent = deadValue;
-  lost.textContent = lostValue;
 }
-
-/* let  deadValue = Number(dead.textContent);
-let lostValue = Number(lost.textContent); *//*  ------ можно ли использовать как это эти переменные, или они лишние ?? */

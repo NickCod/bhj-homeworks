@@ -9,7 +9,4 @@ const TimerCounter = function () {
   }
 }
 
- intervalId = setInterval(TimerCounter, 1000); // Получается здесь у нас хранится идентификатор конкретно этого таймаута ?
-
-// Как получается так, что переменной intervalId присваивается какое то значение уже после того 
-// как оно остановило функцию ?
+ intervalId = setInterval(TimerCounter, 1000); 
