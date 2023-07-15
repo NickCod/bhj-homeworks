@@ -16,3 +16,4 @@ cookie.width = count.textContent % 2 === 0 ? 200 : 300;
 
 prevClickTime = currentTime;
 };
+
