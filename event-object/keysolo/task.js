@@ -17,11 +17,13 @@ class Game {
   }
 
   registerEvents() {
-   document.addEventListener('keydown', function(event) {
-    const key = event.key;
-    console.log(key);
-    this.currentSymbol === key ? this.success() : this.fail;
-   });
+    document.addEventListener('keydown', function(event) {
+      const key = event.key;
+      console.log(key);
+      this.currentSymbol.textContent === key ? this.success() : this.fail();
+    }.bind(this)); // Привязываем контекст к функции обратного вызова
+  
+  
  
     /*
       TODO:
