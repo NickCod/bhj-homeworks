@@ -12,8 +12,9 @@ function changeRot(elements) {
 let color = element.dataset.color;
 element.style.color = color;
 
-  index++;
+let speed = parseInt(element.dataset.speed);
 
+  index++;
   if (index === elements.length) {
     index = 0;
   }
@@ -21,4 +22,6 @@ element.style.color = color;
 
 setInterval(() => {
   changeRot(rotators);
-}, 1000);
+}, speed);
+
+changeRot(rotators);
