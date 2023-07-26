@@ -1,9 +1,15 @@
 let checkboxes = Array.from(document.querySelectorAll('.interest__check'));
 
-for (const item of checkboxes) {
-  item.addEventListener('change', () => {
-    checkboxes.forEach(element => {
-      element.checked = true;
-    });
-  });
-}
+checkboxes.forEach(element => {
+  element.addEventListener('change', () => {
+    if (element.checked === true) {
+      element.closest('.interest').querySelectorAll('.interest__check').forEach(type => {
+        type.checked = true;
+      })
+    } else {
+      element.closest('.interest').querySelectorAll('.interest__check').forEach(type => {
+        type.checked = false;
+      })
+    }
+  })
+})
