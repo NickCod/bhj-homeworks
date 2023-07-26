@@ -1,5 +1,6 @@
 const rotators = Array.from(document.getElementsByClassName("rotator__case"));
 let index = 0;
+let intervalId;
 
 function changeRot(elements) {
   elements.forEach(element => {
@@ -18,8 +19,8 @@ function changeRot(elements) {
   if (index === elements.length) {
     index = 0;
   }
-
-  setInterval(() => {
+   clearInterval(intervalId);
+   intervalId = setInterval(() => {
     changeRot(rotators);
   }, speed);
 }
