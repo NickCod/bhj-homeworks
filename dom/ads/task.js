@@ -9,19 +9,19 @@ function changeRot(elements) {
   let element = elements[index];
   element.classList.add("rotator__case_active");
 
-let color = element.dataset.color;
-element.style.color = color;
+  let color = element.dataset.color;
+  element.style.color = color;
 
-let speed = parseInt(element.dataset.speed);
+  let speed = parseInt(element.dataset.speed); // Объявляем speed внутри функции changeRot
 
   index++;
   if (index === elements.length) {
     index = 0;
   }
-}
 
-setInterval(() => {
-  changeRot(rotators);
-}, speed);
+  setInterval(() => {
+    changeRot(rotators);
+  }, speed);
+}
 
 changeRot(rotators);
