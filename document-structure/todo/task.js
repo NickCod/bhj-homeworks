@@ -1,17 +1,26 @@
-let btn = document.querySelector('tasks__add');
+let btn = document.querySelector('.tasks__add');
 let remove = document.querySelector('.task__remove');
 let taskCases = document.querySelectorAll('.task');
 let parentCase = document.querySelector('.tasks__list');
 let typeInput = document.getElementById('task__input');
-let index = 0;
-remove.addEventListener('click', () => {
-    taskCases.forEach((taskCase) => {
-      taskCase.style.display = 'none'; 
-    });
-  });
+let task_title = document.querySelectorAll('.task__title');
 
-btn.addEventListener('click', (e) => {
-  e.preventDefault();
-  parentCase.textContent = typeInput.value;
-  parentCase.cloneNode(true);
-});
+parentCase.addEventListener('click', (e) => {
+      e.preventDefault();
+      let task = e.target.closest('.task');
+      task.remove();
+  }
+);
+
+btn.addEventListener('click', () => {
+  let value = typeInput.value;
+    parentCase.innerHTML += 
+    `
+    <div class="task">
+      <div class="task__title">
+       ${value}
+        </div>
+        <a href="#" class="task__remove">&times;</a>
+    `;
+    typeInput.value = '';
+  });
