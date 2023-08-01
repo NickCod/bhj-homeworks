@@ -1,19 +1,24 @@
-let has_tooltip = Array.from(document.querySelectorAll('.has-tooltip'));
+/* Данные для текста подсказки берутся из атрибута title
 
+Подсказки активируются классом tooltip_active */
+let tooltipBox;
 has_tooltip.forEach((element) => {
     element.addEventListener('click', (e) => {
-        e.preventDefault();
 
-        let tooltipValue = element.getAttribute('title');
+    let target = e.target;
+    let title = target.getAttribute('title');
 
-        let tooltipContainer = document.createElement('div'); 
-        tooltipContainer.textContent = tooltipValue;
-        tooltipContainer.classList.add('tooltip_active'); 
-        document.body.appendChild(tooltipContainer); 
+        let has_tooltip = Array.from(element.querySelectorAll('.has-tooltip'));
+         has_tooltip.classList.add('.tooltip_active')
+         has_tooltip.style.display = 'inline-block';
+         has_tooltip.value = title;
 
-        setTimeout(() => {
-            tooltipContainer.remove(); // Remove the tooltip after a short delay
-        }, 2000); // You can adjust the delay time as needed
+        tooltipBox = document.createElement('div');
+        tooltipBox.className = 'tooltip';
+        tooltipBox.innerHTML = title;
+        tooltipBox.style.display = 'block';
+        document.body.append(tooltipBox);
+
     });
 });
 
