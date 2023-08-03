@@ -1,19 +1,26 @@
-/* https://students.netoservices.ru/nestjs-backend/slow-get-courses */
-
 let img = document.getElementById('loader');
 let wrapper = document.createElement('div');
 let itemValue = document.getElementById('items');
 
-const xhr = new XMLHttpRequest ();
-xhr.addEventListener('readystatechange', ()=>{
-if (xhr.readyState === xhr.DONE){
+const xhr = new XMLHttpRequest();
+xhr.addEventListener('readystatechange', () => {
+  if (xhr.readyState === xhr.DONE) {
     img.classList.remove('loader_active');
-    wrapper.textContent = xhr.responseText;
-    wrapper.classList.add('item');       
-    itemValue.append(wrapper);
-}
-})
-xhr.open("GET", "https://students.netoservices.ru/nestjs-backend/slow-get-courses")
-xhr.send();
+    const response = JSON.parse(xhr.responseText);
+    const valute = response.response.Valute;
 
-console.log(xhr.responseText);
+    for (const key in valute) {
+      const charCode = valute[key].CharCode;
+      const value = valute[key].Value;
+
+      const itemWrapper = document.createElement('div');
+      itemWrapper.textContent = `${charCode}: ${value}`;
+      itemWrapper.classList.add('item');
+
+      itemValue.appendChild(itemWrapper);
+    }
+  }
+});
+
+xhr.open('GET', 'https://students.netoservices.ru/nestjs-backend/slow-get-courses');
+xhr.send();
