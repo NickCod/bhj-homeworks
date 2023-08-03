@@ -4,8 +4,21 @@ body {
 
 .card {
   width: 625px;
+  position: relative;
+  z-index:1;
 }
 
 .poll__title {
   margin-bottom: 20px;
+}
+
+.dialog {
+  height: 200px;
+    position: relative;
+    z-index: 0;
+    background-color: aliceblue;
+    top: -60px;
+}
+.remove {
+  padding: 10 10 10 10;
 }
