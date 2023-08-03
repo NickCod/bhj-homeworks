@@ -1,4 +1,4 @@
-let btn = document.querySelector('.tasks__add');
+let form = document.getElementById('tasks__form');
 let remove = document.querySelector('.task__remove');
 let taskCases = document.querySelectorAll('.task');
 let parentCase = document.querySelector('.tasks__list');
@@ -12,7 +12,8 @@ parentCase.addEventListener('click', (e) => {
   }
 );
 
-btn.addEventListener('click', () => {
+form.addEventListener('submit', (e) => {
+  e.preventDefault();
   let value = typeInput.value;
     parentCase.innerHTML += 
     `
