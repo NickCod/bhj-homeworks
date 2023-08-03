@@ -32,7 +32,7 @@ addBtn.forEach(elem => {
     let productId = product.dataset.id;
     let productImg = product.querySelector('.product__image').src;
     let productCount = product.querySelector('.product__quantity-value').textContent;
-    let checkedId = document.querySelector('.cart__product[data-id="${productId}"]');
+    let checkedId = document.querySelector(`.cart__product[data-id="${productId}"]`);
     if(checkedId === null){
         cartProducts.innerHTML += `
         <div class="cart__product" data-id=${productId}>
