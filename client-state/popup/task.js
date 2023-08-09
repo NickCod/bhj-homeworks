@@ -1,20 +1,18 @@
-const modal = document.getElementById('subscribe-modal');
+let modal = document.getElementById('subscribe-modal');
+let modalClose = document.querySelector('.modal__close');
 
-function showModal() {
-    modal.style.display = "block";
+window.onload = function() {
+  if (document.cookie.indexOf("name") === -1) {
+    modal.classList.add('modal_active');
+  }
+  
+  modalClose.addEventListener('click', event => {
+    event.preventDefault();
+    let target = event.target;
+    target.closest('.modal').classList.remove('modal_active');
+    let today = new Date();
+    let tomorrow = new Date(today.getTime() + (24 * 60 * 60 * 1000));
+    let dayTomorrow = tomorrow;
+    document.cookie = 'name=close; expires=' + dayTomorrow.toUTCString();
+  });
 }
-
-const storeModal = localStorage.getItem('modal');
-
-if (!storeModal) {
-    showModal();
-} else if (storeModal === 'shown') {
-    const closeSModal = document.querySelector('.modal__close');
-    closeSModal.addEventListener('click', () => {
-        modal.style.display = "none";
-        localStorage.setItem('modal', 'closed');
-    });
-}
-
-
- 
